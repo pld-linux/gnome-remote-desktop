@@ -1,17 +1,18 @@
 Summary:	GNOME Remote Desktop daemon
 Summary(pl.UTF-8):	Demon zdalnego pulpitu GNOME (GNOME Remote Desktop)
 Name:		gnome-remote-desktop
-Version:	0.1.9
+Version:	40.0
 Release:	1
 License:	GPL v2+
 Group:		Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-remote-desktop/0.1/%{name}-%{version}.tar.xz
-# Source0-md5:	233468415c5e1be7cd1f511293629654
+Source0:	https://download.gnome.org/sources/gnome-remote-desktop/40/%{name}-%{version}.tar.xz
+# Source0-md5:	1c269b3b0f30116f27cce0ca63af9eb0
 URL:		https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 BuildRequires:	cairo-devel
-BuildRequires:	freerdp2-devel >= 2.2.0
+BuildRequires:	freerdp2-devel >= 2.3.0
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.26
+BuildRequires:	libfuse3-devel >= 3.9.1
 BuildRequires:	libnotify-devel
 BuildRequires:	libsecret-devel
 BuildRequires:	libvncserver-devel
@@ -20,9 +21,11 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pipewire-devel >= 0.3.0
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	xorg-lib-libxkbcommon-devel >= 1.0.0
 BuildRequires:	xz
-Requires:	freerdp2-libs >= 2.2.0
+Requires:	freerdp2-libs >= 2.3.0
 Requires:	glib2 >= 1:2.26
+Requires:	xorg-lib-libxkbcommon >= 1.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
