@@ -1,12 +1,13 @@
+# TODO: nvenc on bcond (BR: ffnvcodec)
 Summary:	GNOME Remote Desktop daemon
 Summary(pl.UTF-8):	Demon zdalnego pulpitu GNOME (GNOME Remote Desktop)
 Name:		gnome-remote-desktop
-Version:	40.2
+Version:	41.0
 Release:	1
 License:	GPL v2+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/gnome-remote-desktop/40/%{name}-%{version}.tar.xz
-# Source0-md5:	bcad92fc1e2b10fb63cb9bed612e7f13
+Source0:	https://download.gnome.org/sources/gnome-remote-desktop/41/%{name}-%{version}.tar.xz
+# Source0-md5:	d4d1987687d056d4575ee2ce005dda81
 URL:		https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 BuildRequires:	cairo-devel
 BuildRequires:	freerdp2-devel >= 2.3.0
@@ -20,6 +21,7 @@ BuildRequires:	meson >= 0.47.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pipewire-devel >= 0.3.0
 BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	systemd-units
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libxkbcommon-devel >= 1.0.0
 BuildRequires:	xz
@@ -48,6 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %ninja_install -C build
 
+%find_lang %{name}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -57,10 +60,11 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %glib_compile_schemas
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_libexecdir}/gnome-remote-desktop-daemon
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.gschema.xml
+%{_datadir}/gnome-remote-desktop
 %{systemduserunitdir}/gnome-remote-desktop.service
