@@ -2,12 +2,12 @@
 Summary:	GNOME Remote Desktop daemon
 Summary(pl.UTF-8):	Demon zdalnego pulpitu GNOME (GNOME Remote Desktop)
 Name:		gnome-remote-desktop
-Version:	41.1
+Version:	41.2
 Release:	1
 License:	GPL v2+
 Group:		Applications
 Source0:	https://download.gnome.org/sources/gnome-remote-desktop/41/%{name}-%{version}.tar.xz
-# Source0-md5:	f78cff623d85a07bab065465cb66aa45
+# Source0-md5:	5ed16db0a55653c3c87779f3ecd37af1
 URL:		https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 BuildRequires:	cairo-devel
 BuildRequires:	freerdp2-devel >= 2.3.0
