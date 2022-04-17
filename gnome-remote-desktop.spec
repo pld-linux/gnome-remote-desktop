@@ -2,31 +2,37 @@
 Summary:	GNOME Remote Desktop daemon
 Summary(pl.UTF-8):	Demon zdalnego pulpitu GNOME (GNOME Remote Desktop)
 Name:		gnome-remote-desktop
-Version:	41.2
+Version:	42.0
 Release:	1
 License:	GPL v2+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/gnome-remote-desktop/41/%{name}-%{version}.tar.xz
-# Source0-md5:	5ed16db0a55653c3c87779f3ecd37af1
+Source0:	https://download.gnome.org/sources/gnome-remote-desktop/42/%{name}-%{version}.tar.xz
+# Source0-md5:	588f01ea712220802d0ddae024d8e9ae
 URL:		https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 BuildRequires:	cairo-devel
-BuildRequires:	freerdp2-devel >= 2.3.0
+BuildRequires:	freerdp2-devel >= 2.5.0
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.68
+BuildRequires:	libdrm-devel
+BuildRequires:	libepoxy-devel >= 1.4
 BuildRequires:	libfuse3-devel >= 3.9.1
 BuildRequires:	libnotify-devel
 BuildRequires:	libsecret-devel
 BuildRequires:	libvncserver-devel
 BuildRequires:	meson >= 0.47.0
 BuildRequires:	ninja >= 1.5
+BuildRequires:	nv-codec-headers >= 11.1.5.0
 BuildRequires:	pipewire-devel >= 0.3.0
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	systemd-units
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libxkbcommon-devel >= 1.0.0
 BuildRequires:	xz
-Requires:	freerdp2-libs >= 2.3.0
+Requires:	freerdp2-libs >= 2.5.0
 Requires:	glib2 >= 1:2.68
+Requires:	libepoxy >= 1.4
+Requires:	libfuse3 >= 3.9.1
+Requires:	pipewire >= 0.3.0
 Requires:	xorg-lib-libxkbcommon >= 1.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -63,6 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc README
+%attr(755,root,root) %{_bindir}/grdctl
 %attr(755,root,root) %{_libexecdir}/gnome-remote-desktop-daemon
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.gschema.xml
