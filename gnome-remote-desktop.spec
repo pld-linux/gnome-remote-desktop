@@ -1,13 +1,12 @@
-# TODO: nvenc on bcond (BR: ffnvcodec >= 11)
 Summary:	GNOME Remote Desktop daemon
 Summary(pl.UTF-8):	Demon zdalnego pulpitu GNOME (GNOME Remote Desktop)
 Name:		gnome-remote-desktop
-Version:	42.0
+Version:	42.1
 Release:	1
 License:	GPL v2+
 Group:		Applications
 Source0:	https://download.gnome.org/sources/gnome-remote-desktop/42/%{name}-%{version}.tar.xz
-# Source0-md5:	588f01ea712220802d0ddae024d8e9ae
+# Source0-md5:	2caacfc758e278c58369f12781dbbb0d
 URL:		https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 BuildRequires:	cairo-devel
 BuildRequires:	freerdp2-devel >= 2.5.0
