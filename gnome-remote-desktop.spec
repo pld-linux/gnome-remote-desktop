@@ -1,12 +1,12 @@
 Summary:	GNOME Remote Desktop daemon
 Summary(pl.UTF-8):	Demon zdalnego pulpitu GNOME (GNOME Remote Desktop)
 Name:		gnome-remote-desktop
-Version:	44.2
+Version:	45.1
 Release:	1
 License:	GPL v2+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/gnome-remote-desktop/44/%{name}-%{version}.tar.xz
-# Source0-md5:	f56e42b8e5fa8819891edba54a8ac2e2
+Source0:	https://download.gnome.org/sources/gnome-remote-desktop/45/%{name}-%{version}.tar.xz
+# Source0-md5:	d48fabf028b7756dcc43bf8a69483411
 URL:		https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 BuildRequires:	cairo-devel
 BuildRequires:	fdk-aac-devel
@@ -14,6 +14,7 @@ BuildRequires:	freerdp2-devel >= 2.10.0
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.68
 BuildRequires:	libdrm-devel
+BuildRequires:	libei-devel >= 1.1
 BuildRequires:	libepoxy-devel >= 1.4
 BuildRequires:	libfuse3-devel >= 3.9.1
 BuildRequires:	libnotify-devel
@@ -26,6 +27,7 @@ BuildRequires:	pipewire-devel >= 0.3.49
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	systemd-units
 BuildRequires:	tar >= 1:1.22
+# tss2-{esys,mu,rc,tctildr}
 BuildRequires:	tpm2-tss-devel
 BuildRequires:	xorg-lib-libxkbcommon-devel >= 1.0.0
 BuildRequires:	xz
@@ -49,6 +51,7 @@ Demon zdalnego pulpitu GNOME, wykorzystujący pipewire.
 %build
 %meson build \
 	-Dsystemd_user_unit_dir=%{systemduserunitdir} \
+	-Dtests=false \
 	-Dvnc=true
 
 %ninja_build -C build
