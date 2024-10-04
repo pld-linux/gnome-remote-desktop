@@ -1,12 +1,12 @@
 Summary:	GNOME Remote Desktop daemon
 Summary(pl.UTF-8):	Demon zdalnego pulpitu GNOME (GNOME Remote Desktop)
 Name:		gnome-remote-desktop
-Version:	46.4
+Version:	47.0
 Release:	1
 License:	GPL v2+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/gnome-remote-desktop/46/%{name}-%{version}.tar.xz
-# Source0-md5:	dddd3f9e57dbb8d0077ae73ccf37e45d
+Source0:	https://download.gnome.org/sources/gnome-remote-desktop/47/%{name}-%{version}.tar.xz
+# Source0-md5:	f98de2531ff0d2a62b19b40199ea88d0
 URL:		https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 BuildRequires:	cairo-devel
 BuildRequires:	fdk-aac-devel
@@ -101,17 +101,19 @@ fi
 %doc README.md
 %attr(755,root,root) %{_bindir}/grdctl
 %attr(755,root,root) %{_libexecdir}/gnome-remote-desktop-daemon
+%attr(755,root,root) %{_libexecdir}/gnome-remote-desktop-configuration-daemon
 %attr(755,root,root) %{_libexecdir}/gnome-remote-desktop-enable-service
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.gschema.xml
 %{_datadir}/gnome-remote-desktop
-%{_datadir}/dbus-1/system-services/org.gnome.RemoteDesktop.service
+%{_datadir}/dbus-1/system-services/org.gnome.RemoteDesktop.Configuration.service
 %{_datadir}/dbus-1/system.d/org.gnome.RemoteDesktop.conf
 %{_datadir}/polkit-1/actions/org.gnome.remotedesktop.configure-system-daemon.policy
 %{_datadir}/polkit-1/actions/org.gnome.remotedesktop.enable-system-daemon.policy
 %{_datadir}/polkit-1/rules.d/20-gnome-remote-desktop.rules
 %{_desktopdir}/org.gnome.RemoteDesktop.Handover.desktop
 %{systemdunitdir}/gnome-remote-desktop.service
+%{systemdunitdir}/gnome-remote-desktop-configuration.service
 %{systemduserunitdir}/gnome-remote-desktop-handover.service
 %{systemduserunitdir}/gnome-remote-desktop-headless.service
 %{systemduserunitdir}/gnome-remote-desktop.service
