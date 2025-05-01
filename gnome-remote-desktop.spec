@@ -1,13 +1,14 @@
 Summary:	GNOME Remote Desktop daemon
 Summary(pl.UTF-8):	Demon zdalnego pulpitu GNOME (GNOME Remote Desktop)
 Name:		gnome-remote-desktop
-Version:	47.3
+Version:	48.1
 Release:	1
 License:	GPL v2+
 Group:		Applications
-Source0:	https://download.gnome.org/sources/gnome-remote-desktop/47/%{name}-%{version}.tar.xz
-# Source0-md5:	6e38a2567bf42054f439f5f28a491caf
+Source0:	https://download.gnome.org/sources/gnome-remote-desktop/48/%{name}-%{version}.tar.xz
+# Source0-md5:	7c4bdd84ddbf1e3e52ac4599513b8adf
 URL:		https://gitlab.gnome.org/GNOME/gnome-remote-desktop
+BuildRequires:	Vulkan-Loader-devel
 BuildRequires:	cairo-devel
 BuildRequires:	fdk-aac-devel
 BuildRequires:	freerdp3-devel >= 3.1.0
@@ -19,6 +20,8 @@ BuildRequires:	libepoxy-devel >= 1.4
 BuildRequires:	libfuse3-devel >= 3.9.1
 BuildRequires:	libnotify-devel
 BuildRequires:	libsecret-devel
+BuildRequires:	libva-devel
+BuildRequires:	libva-drm-devel
 BuildRequires:	libvncserver-devel
 BuildRequires:	meson >= 0.58.0
 BuildRequires:	ninja >= 1.5
@@ -26,7 +29,10 @@ BuildRequires:	nv-codec-headers >= 11.1.5.0
 BuildRequires:	opus-devel
 BuildRequires:	pipewire-devel >= 0.3.49
 BuildRequires:	polkit-devel >= 122
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
+# glslc
+BuildRequires:	shaderc
+BuildRequires:	spirv-tools
 BuildRequires:	systemd-units
 BuildRequires:	tar >= 1:1.22
 # tss2-{esys,mu,rc,tctildr}
@@ -60,17 +66,17 @@ Demon zdalnego pulpitu GNOME, wykorzystujący pipewire.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	-Dsystemd_user_unit_dir=%{systemduserunitdir} \
 	-Dtests=false \
 	-Dvnc=true
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 # not supported by glibc (as of 2.37)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
