@@ -1,12 +1,12 @@
 Summary:	GNOME Remote Desktop daemon
 Summary(pl.UTF-8):	Demon zdalnego pulpitu GNOME (GNOME Remote Desktop)
 Name:		gnome-remote-desktop
-Version:	48.1
+Version:	48.2
 Release:	1
 License:	GPL v2+
 Group:		Applications
 Source0:	https://download.gnome.org/sources/gnome-remote-desktop/48/%{name}-%{version}.tar.xz
-# Source0-md5:	7c4bdd84ddbf1e3e52ac4599513b8adf
+# Source0-md5:	e745cc51cf9cd0b86e4102b63c555c88
 URL:		https://gitlab.gnome.org/GNOME/gnome-remote-desktop
 BuildRequires:	Vulkan-Loader-devel
 BuildRequires:	cairo-devel
